@@ -3,6 +3,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const PATHS = {
   build: path.join(__dirname, 'public'),
@@ -36,7 +37,7 @@ const common = {
       {
         test: /\.scss$/,
         include: PATHS.styles,
-        loader: ExtractTextPlugin.extract('style', 'css!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
     ],
   },
@@ -46,6 +47,7 @@ const common = {
       names: ['vendor', 'manifest'],
     }),
   ],
+  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
 };
 
 var config;
