@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>React Gallery</title>
+    <link rel="stylesheet" href="/app.css" media="screen">
+  </head>
+  <body>
+    <div id="gallery"><%- body %></div>
+    <div id="lightbox"></div>
+    <script>
+      window.__PRELOADED_STATE__ = <%- JSON.stringify(preloadedState) %>;
+    </script>
+    <script type="text/javascript" src="/manifest.js"></script>
+    <script type="text/javascript" src="/vendor.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+  </body>
+</html>

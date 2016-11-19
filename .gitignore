@@ -1,0 +1,8 @@
+# Build
+public
+
+# Logs
+*.log
+
+# Dependencies
+node_modules

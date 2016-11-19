@@ -1,0 +1,25 @@
+.lightbox {
+  &__overlay {
+    background-color: rgba(13,94,130,0.8);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+  }
+
+  &__image {
+    border: 0.5em solid #fff;
+    bottom: 0;
+    box-shadow: 0 0.2em 0.2em 0.1em rgba(0,0,0,0.15);
+    display: block;
+    left: 0;
+    margin: auto;
+    max-height: 90%;
+    max-width: 90%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
