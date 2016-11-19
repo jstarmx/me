@@ -10,9 +10,16 @@ const Gallery = React.createClass({
   render () {
     return (
       <ul className="gallery">
-        {this.state.photos.map((photo) => {
-          return <Thumb photo={photo} key={photo.id} />;
-        })}
+        {this.state.photos.map(photo =>
+          <Thumb
+            farm={photo.farm}
+            id={photo.id}
+            key={photo.id}
+            secret={photo.secret}
+            server={photo.server}
+            title={photo.title}
+          />
+        )}
       </ul>
     );
   },

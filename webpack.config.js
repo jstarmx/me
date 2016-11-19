@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const path = require('path');
-const merge = require('webpack-merge');
-const validate = require('webpack-validator');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const merge = require('webpack-merge');
+const path = require('path');
+const validate = require('webpack-validator');
+const webpack = require('webpack');
 
 const PATHS = {
   build: path.join(__dirname, 'public'),
@@ -15,7 +15,7 @@ const PATHS = {
 const common = {
   entry: {
     app: [
-      path.join(PATHS.scripts, 'app.js'),
+      path.join(PATHS.scripts, 'app.jsx'),
       path.join(PATHS.styles, 'app.scss'),
     ],
     vendor: ['react'],
@@ -28,6 +28,12 @@ const common = {
     extensions: ['', '.js', '.jsx'],
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+      },
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -47,10 +53,10 @@ const common = {
       names: ['vendor', 'manifest'],
     }),
   ],
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
+  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
 };
 
-var config;
+let config;
 
 switch (process.env.npm_lifecycle_event) {
   case 'build':
@@ -58,6 +64,7 @@ switch (process.env.npm_lifecycle_event) {
     config = merge(
       common,
       {
+        devtool: 'source-map',
         plugins: [
           new webpack.DefinePlugin({
             'process.env': {
@@ -74,8 +81,13 @@ switch (process.env.npm_lifecycle_event) {
     );
     break;
 
-  case 'dev':
-    config = merge(common, {});
+  default:
+    config = merge(
+      common,
+      {
+        devtool: 'eval-source-map',
+      }
+    );
 }
 
 module.exports = validate(config);

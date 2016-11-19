@@ -1,12 +1,14 @@
 .lightbox {
   &__overlay {
     background-color: rgba(13,94,130,0.8);
+    border: 0;
     bottom: 0;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 10;
+    width: 100%;
+    z-index: 100;
   }
 
   &__image {

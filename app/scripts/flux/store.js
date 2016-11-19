@@ -1,7 +1,7 @@
 const EventEmitter = require('events').EventEmitter;
 const Dispatcher = require('./dispatcher');
 
-let _store = {
+const _store = {
   lightboxUrl: null,
   photos: [],
 };
@@ -34,6 +34,9 @@ Dispatcher.register((payload) => {
     case 'SET_LIGHTBOX':
       Store.set({ lightboxUrl: payload.url });
       break;
+
+    default:
+      return true;
   }
 
   return true;

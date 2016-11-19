@@ -3,27 +3,27 @@ const flickr = require('../api/flickr');
 
 const Actions = {
   fetchPhotos () {
-    flickr ()
+    flickr()
       .then((photos) => {
         Actions.savePhotos(photos);
       }, () => {
-        console.log('error');
+        // error
       });
   },
 
   savePhotos (photos) {
     Dispatcher.dispatch({
       action: 'SAVE_PHOTOS',
-      photos: photos,
+      photos,
     });
   },
 
   setLightbox (url) {
     Dispatcher.dispatch({
       action: 'SET_LIGHTBOX',
-      url: url,
+      url,
     });
   },
-}
+};
 
 module.exports = Actions;
