@@ -44,6 +44,7 @@
     "webpack-validator": "^2.2.9"
   },
   "devDependencies": {
+    "coveralls": "^2.11.15",
     "eslint-loader": "^1.6.1",
     "stylelint-webpack-plugin": "^0.4.0",
     "webpack-notifier": "^1.4.1"
