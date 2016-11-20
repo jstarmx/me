@@ -2,28 +2,22 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
+const Paths = require('./lib/paths');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const validate = require('webpack-validator');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
-const PATHS = {
-  build: path.join(__dirname, 'public'),
-  scripts: path.join(__dirname, 'app', 'scripts'),
-  styles: path.join(__dirname, 'app', 'styles'),
-  views: path.join(__dirname, 'app', 'views'),
-};
-
 const common = {
   entry: {
     app: [
-      path.join(PATHS.scripts, 'app.jsx'),
-      path.join(PATHS.styles, 'app.scss'),
+      path.join(Paths.scripts, 'app.jsx'),
+      path.join(Paths.styles, 'app.scss'),
     ],
     vendor: ['react'],
   },
   output: {
-    path: PATHS.build,
+    path: Paths.build,
     filename: '[name].js',
   },
   resolve: {
@@ -33,12 +27,12 @@ const common = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: PATHS.scripts,
+        include: Paths.scripts,
         loader: 'babel',
       },
       {
         test: /\.scss$/,
-        include: PATHS.styles,
+        include: Paths.styles,
         loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
     ],
@@ -91,7 +85,7 @@ switch (process.env.npm_lifecycle_event) {
         },
         plugins: [
           new StyleLintPlugin({
-            context: PATHS.styles,
+            context: Paths.styles,
             syntax: 'scss',
           }),
           new WebpackNotifierPlugin(),
