@@ -11,18 +11,6 @@ const Lightbox = React.createClass({
     Store.addChangeListener(this._onChange);
   },
 
-  render () {
-    if (this.state.url) {
-      return (
-        <div className="lightbox__overlay" onClick={this._onClick}>
-          <img src={this.state.url} className="lightbox__image" />
-        </div>
-      );
-    }
-
-    return null;
-  },
-
   _onChange () {
     this.setState({ url: Store.get('lightboxUrl') });
   },
@@ -31,6 +19,18 @@ const Lightbox = React.createClass({
     if (!e.target.classList.contains('lightbox__image')) {
       Actions.setLightbox(null);
     }
+  },
+
+  render () {
+    if (this.state.url) {
+      return (
+        <button className="lightbox__overlay" onClick={this._onClick}>
+          <img src={this.state.url} className="lightbox__image" role="presentation" />
+        </button>
+      );
+    }
+
+    return null;
   },
 });
 
