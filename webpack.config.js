@@ -2,8 +2,10 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const validate = require('webpack-validator');
 const webpack = require('webpack');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const PATHS = {
   build: path.join(__dirname, 'public'),
@@ -28,12 +30,6 @@ const common = {
     extensions: ['', '.js', '.jsx'],
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['eslint'],
-      },
-    ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -53,7 +49,6 @@ const common = {
       names: ['vendor', 'manifest'],
     }),
   ],
-  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
 };
 
 let config;
@@ -86,6 +81,22 @@ switch (process.env.npm_lifecycle_event) {
       common,
       {
         devtool: 'eval-source-map',
+        module: {
+          preLoaders: [
+            {
+              test: /\.jsx?$/,
+              loaders: ['eslint'],
+            },
+          ],
+        },
+        plugins: [
+          new StyleLintPlugin({
+            context: PATHS.styles,
+            syntax: 'scss',
+          }),
+          new WebpackNotifierPlugin(),
+        ],
+        postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
       }
     );
 }

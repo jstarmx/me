@@ -3,7 +3,7 @@
   "env": {
     "browser": true,
     "jasmine": true,
-    "node": true,
+    "node": true
   },
   "rules": {
     "comma-dangle": [0, {
@@ -11,11 +11,16 @@
       "objects": "always-multiline",
       "imports": "never",
       "exports": "never",
-      "functions": "never",
+      "functions": "never"
     }],
     "indent": 0,
     "no-underscore-dangle": 0,
     "space-before-function-paren": [2, "always"],
-    "react/prefer-es6-class": [2, "never"],
-  },
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true,
+      "optionalDependencies": false,
+      "peerDependencies": false
+    }],
+    "react/prefer-es6-class": [2, "never"]
+  }
 }
