@@ -8,10 +8,15 @@
   "scripts": {
     "dev": "rm -rf ./public && webpack -d --watch",
     "postinstall": "rm -rf ./public && webpack -p",
-    "test": "jest"
+    "test": "jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "James Starkie",
   "license": "MIT",
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,jsx}", "!**/public/**", "!**/__coverage__/**"],
+    "coverageDirectory": "./__coverage__"
+  },
   "dependencies": {
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.2.1",
