@@ -8,10 +8,15 @@
   "scripts": {
     "dev": "rm -rf ./public && webpack -d --watch",
     "postinstall": "rm -rf ./public && webpack -p",
-    "test": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss"
+    "test": "jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "James Starkie",
   "license": "MIT",
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,jsx}", "!**/public/**", "!**/__coverage__/**"],
+    "coverageDirectory": "./__coverage__"
+  },
   "dependencies": {
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.2.1",
@@ -39,6 +44,8 @@
     "webpack-validator": "^2.2.9"
   },
   "devDependencies": {
+    "babel-jest": "^17.0.2",
+    "babel-polyfill": "^6.16.0",
     "coveralls": "^2.11.15",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^13.0.0",
@@ -46,6 +53,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
+    "jest": "^17.0.3",
+    "react-test-renderer": "^15.4.0",
     "stylelint": "^7.6.0",
     "stylelint-config-standard": "^15.0.0"
   }
