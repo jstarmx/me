@@ -3,7 +3,9 @@ public
 
 # Logs
 *.log
-__coverage__
 
 # Dependencies
 node_modules
+
+# Testing
+__coverage__
