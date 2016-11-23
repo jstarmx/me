@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "rm -rf ./public && webpack -d --watch",
     "postinstall": "rm -rf ./public && webpack -p",
-    "test": "jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss && jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:lint": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss",
+    "test:jest": "jest --coverage"
   },
   "author": "James Starkie",
   "license": "MIT",
@@ -20,7 +22,7 @@
       "!**/__coverage__/**"
     ],
     "coverageDirectory": "./__coverage__",
-    "setupFiles": ["./__resources__/env.js"]
+    "setupFiles": ["./lib/test-env.js"]
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",

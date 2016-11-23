@@ -8,9 +8,9 @@ const React = require('react');
 const shallow = require('enzyme/shallow');
 const Store = require('../../flux/store');
 
-const clickEvent = (insideLightbox) => {
-  return { target: { classList: { contains: () => insideLightbox } } };
-};
+const clickEvent = insideLightbox => ({
+  target: { classList: { contains: () => insideLightbox } }
+});
 
 describe('Lightbox', () => {
   describe('listens to store', () => {
