@@ -1,6 +1,6 @@
 const React = require('react');
-const Thumb = require('./thumb');
 const Store = require('../flux/store');
+const Thumb = require('./thumb');
 
 const Gallery = React.createClass({
   getInitialState () {
