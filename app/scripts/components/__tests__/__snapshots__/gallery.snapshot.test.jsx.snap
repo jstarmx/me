@@ -1,0 +1,4 @@
+exports[`<Gallery /> (Snapshot) renders a gallery component 1`] = `
+<ul
+  className="gallery" />
+`;

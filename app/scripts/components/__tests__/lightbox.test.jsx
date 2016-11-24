@@ -7,8 +7,9 @@ const mount = require('enzyme/mount');
 const React = require('react');
 const Store = require('../../flux/store');
 
+const callbacks = {};
+
 describe('<Lightbox />', () => {
-  const callbacks = {};
   Actions.setLightbox = jest.fn();
   Store.addChangeListener = jest.fn((cb) => { callbacks._onChange = cb; });
   Store.get = jest.fn();
