@@ -10,7 +10,7 @@ const Thumb = React.createClass({
     title: React.PropTypes.string,
   },
 
-  _handleClick (e) {
+  _onClick (e) {
     e.preventDefault();
     Actions.setLightbox(this._url('c'));
   },
@@ -31,7 +31,7 @@ const Thumb = React.createClass({
         <a
           className="thumb__link"
           href={this._url('c')}
-          onClick={this._handleClick}
+          onClick={this._onClick}
           rel="noopener noreferrer"
           target="_blank"
         >
