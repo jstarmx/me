@@ -5,47 +5,44 @@ const Actions = require('../../flux/actions');
 const Lightbox = require('../lightbox');
 const mount = require('enzyme/mount');
 const React = require('react');
-const shallow = require('enzyme/shallow');
 const Store = require('../../flux/store');
 
-const clickEvent = insideLightbox => ({
-  target: { classList: { contains: () => insideLightbox } }
-});
+describe('<Lightbox />', () => {
+  const callbacks = {};
+  Actions.setLightbox = jest.fn();
+  Store.addChangeListener = jest.fn((cb) => { callbacks._onChange = cb; });
+  Store.get = jest.fn();
+  Store.get.mockReturnValue('example.url');
 
-describe('Lightbox', () => {
-  describe('listens to store', () => {
-    let triggerChange;
-    Store.get = jest.fn();
-    Store.get.mockReturnValueOnce('example.url');
-    Store.addChangeListener = jest.fn((cb) => {
-      triggerChange = cb;
-    });
+  const wrapper = mount(<Lightbox />);
 
-    const wrapper = mount(<Lightbox />);
-
-    it('adds a store listener', () => {
-      triggerChange();
-      expect(wrapper.find('.lightbox__image').prop('src')).toBe('example.url');
+  describe('on mount', () => {
+    it('renders nothing', () => {
+      expect(wrapper.html()).toBe(null);
     });
   });
 
-  describe('on click', () => {
-    Actions.setLightbox = jest.fn();
+  describe('on receiving an image url', () => {
+    beforeEach(() => callbacks._onChange());
+    afterEach(() => wrapper.setState({ url: null }));
 
-    const wrapper = shallow(<Lightbox />);
-    wrapper.setState({ url: 'example.url' });
-
-    describe('inside the lightbox', () => {
-      it('resets the lighbox url', () => {
-        wrapper.find('button').simulate('click', clickEvent(true));
-        expect(Actions.setLightbox).not.toHaveBeenCalled();
-      });
+    it('renders the image in a lightbox', () => {
+      expect(wrapper.find('.lightbox__image').prop('src')).toBe('example.url');
     });
 
-    describe('outside the lightbox', () => {
-      it('resets the lighbox url', () => {
-        wrapper.find('button').simulate('click', clickEvent(false));
-        expect(Actions.setLightbox).toHaveBeenCalledWith(null);
+    describe('when clicking', () => {
+      describe('inside the lightbox', () => {
+        it('does nothing', () => {
+          wrapper.find('.lightbox__image').simulate('click');
+          expect(Actions.setLightbox).not.toHaveBeenCalled();
+        });
+      });
+
+      describe('outside the lightbox', () => {
+        it('resets the lighbox url', () => {
+          wrapper.find('button').simulate('click');
+          expect(Actions.setLightbox).toHaveBeenCalledWith(null);
+        });
       });
     });
   });
