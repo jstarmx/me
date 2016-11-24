@@ -22,7 +22,8 @@ const Thumb = React.createClass({
   _url (size) {
     const suffix = size ? (`_${size}`) : '';
 
-    return `https://farm${this.props.farm}.staticflickr.com/${this.props.server}/${this.props.id}_${this.props.secret}${suffix}.jpg`;
+    return `https://farm${this.props.farm}.staticflickr.com/${this.props.server}` +
+      `/${this.props.id}_${this.props.secret}${suffix}.jpg`;
   },
 
   render () {

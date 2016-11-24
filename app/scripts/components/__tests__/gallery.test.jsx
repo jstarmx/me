@@ -6,24 +6,24 @@ const shallow = require('enzyme/shallow');
 const Store = require('../../flux/store');
 const Thumb = require('../thumb');
 
-const imageAttrs = {
+const photo = {
   id: '4739346163',
   secret: '9472a26e5c',
   server: '4075',
   farm: 5,
-  title: 'Cairngorm'
+  title: 'Cairngorm',
 };
 
 describe('<Gallery />', () => {
   Store.get = jest.fn();
-  Store.get.mockReturnValue([imageAttrs]);
+  Store.get.mockReturnValue([photo]);
 
   const wrapper = shallow(<Gallery />);
 
   describe('store returns one image', () => {
-    it('renders one <Thumb /> component', () => {
+    it('renders one <Thumb /> component wih props', () => {
       expect(wrapper.find(Thumb).length).toBe(1);
-      expect(wrapper.find(Thumb).nodes[0].props).toEqual(imageAttrs);
+      expect(wrapper.find(Thumb).nodes[0].props).toEqual(photo);
     });
   });
 });
