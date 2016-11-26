@@ -5,8 +5,6 @@ module.exports = {
     return api()
       .then((response) => {
         this[response.action](response.payload);
-      }, () => {
-        // error
       });
   },
 

@@ -1,5 +1,5 @@
-const EventEmitter = require('events').EventEmitter;
 const Dispatcher = require('./dispatcher');
+const EventEmitter = require('events').EventEmitter;
 
 const _store = {
   lightboxUrl: null,
