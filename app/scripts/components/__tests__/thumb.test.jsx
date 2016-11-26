@@ -15,32 +15,30 @@ const photo = {
 };
 const url = 'https://farm5.staticflickr.com/4075/4739346163_9472a26e5c_c.jpg';
 
-describe('<Thumb />', () => {
-  Actions.setLightbox = jest.fn();
-  e.preventDefault = jest.fn();
+Actions.setLightbox = jest.fn();
+e.preventDefault = jest.fn();
 
-  const wrapper = shallow(
-    <Thumb
-      farm={photo.farm}
-      id={photo.id}
-      key={photo.id}
-      secret={photo.secret}
-      server={photo.server}
-      title={photo.title}
-    />
-  );
+const wrapper = shallow(
+  <Thumb
+    farm={photo.farm}
+    id={photo.id}
+    key={photo.id}
+    secret={photo.secret}
+    server={photo.server}
+    title={photo.title}
+  />
+);
 
-  describe('on click', () => {
-    beforeEach(() => {
-      wrapper.find('.thumb__link').simulate('click', e);
-    });
+describe('<Thumb />, on click', () => {
+  beforeEach(() => {
+    wrapper.find('.thumb__link').simulate('click', e);
+  });
 
-    it('prevents the link opening', () => {
-      expect(e.preventDefault).toHaveBeenCalled();
-    });
+  it('prevents the link opening', () => {
+    expect(e.preventDefault).toHaveBeenCalled();
+  });
 
-    it('sets the correct lightbox url', () => {
-      expect(Actions.setLightbox).toHaveBeenCalledWith(url);
-    });
+  it('sets the correct lightbox url', () => {
+    expect(Actions.setLightbox).toHaveBeenCalledWith(url);
   });
 });

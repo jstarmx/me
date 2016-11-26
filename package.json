@@ -22,7 +22,12 @@
       "!**/__coverage__/**"
     ],
     "coverageDirectory": "./__coverage__",
-    "setupFiles": ["./lib/test-env.js"]
+    "setupFiles": [
+      "./lib/test-env.js"
+    ],
+    "transform": {
+      ".*": "./node_modules/babel-jest"
+    }
   },
   "dependencies": {
     "autoprefixer": "^6.5.3",
