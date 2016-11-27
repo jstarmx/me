@@ -12,7 +12,7 @@ module.exports = {
               payload: JSON.parse(response.text).photoset.photo
             });
           } else {
-            reject();
+            reject(error);
           }
         });
       });
