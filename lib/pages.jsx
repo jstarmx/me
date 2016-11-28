@@ -1,4 +1,5 @@
 const Actions = require('../app/scripts/flux/actions');
+const Api = require('../app/scripts/api');
 const Gallery = require('../app/scripts/components/gallery');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
@@ -16,7 +17,7 @@ const Pages = {
     if (Store.has('photos')) {
       render();
     } else {
-      Actions.fetchPhotos();
+      Actions.fetch(Api.flickr);
       Store.addChangeListener(render);
     }
   },

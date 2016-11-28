@@ -1,13 +1,10 @@
 const Dispatcher = require('./dispatcher');
-const flickr = require('../api/flickr');
 
-const Actions = {
-  fetchPhotos () {
-    flickr()
-      .then((photos) => {
-        Actions.savePhotos(photos);
-      }, () => {
-        // error
+module.exports = {
+  fetch (api) {
+    return api()
+      .then((response) => {
+        this[response.action](response.payload);
       });
   },
 
@@ -25,5 +22,3 @@ const Actions = {
     });
   },
 };
-
-module.exports = Actions;
