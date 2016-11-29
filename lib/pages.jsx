@@ -5,7 +5,7 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const Store = require('../app/scripts/flux/store');
 
-const Pages = {
+module.exports = {
   gallery (req, res) {
     function render () {
       return res.render('gallery', {
@@ -15,12 +15,10 @@ const Pages = {
     }
 
     if (Store.has('photos')) {
-      render();
-    } else {
-      Actions.fetch(Api.flickr);
-      Store.addChangeListener(render);
+      return render();
     }
+
+    Actions.fetch(Api.flickr);
+    return Store.addChangeListener(render);
   },
 };
-
-module.exports = Pages;
