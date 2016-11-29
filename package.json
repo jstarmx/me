@@ -8,9 +8,8 @@
   "scripts": {
     "dev": "rm -rf ./public && webpack -d --watch",
     "postinstall": "rm -rf ./public && webpack -p",
-    "test": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss && jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:lint": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss",
-    "test:jest": "jest --coverage"
+    "lint": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss",
+    "test": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss && jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "James Starkie",
   "license": "MIT",
@@ -19,7 +18,8 @@
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/public/**",
-      "!**/__coverage__/**"
+      "!**/__coverage__/**",
+      "!webpack.config.js"
     ],
     "coverageDirectory": "./__coverage__",
     "setupFiles": [
