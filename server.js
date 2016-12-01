@@ -16,3 +16,5 @@ app.get('/', (req, res) => Pages.gallery(req, res));
 app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port')); // eslint-disable-line no-console
 });
+
+module.exports = app;
