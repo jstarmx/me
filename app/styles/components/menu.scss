@@ -9,13 +9,13 @@
   padding: 1em;
 
   &__link {
-    color: white;
+    color: $white;
     display: block;
     padding: 0.5em;
     text-decoration: none;
 
     &:hover {
-      background-color: white;
+      background-color: $white;
       color: #d4224f;
     }
   }

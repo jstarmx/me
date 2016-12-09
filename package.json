@@ -39,7 +39,6 @@
     "events": "^1.1.1",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
     "flux": "^3.1.0",
     "import-glob-loader": "^1.1.0",
     "lodash": "^4.17.2",
@@ -71,7 +70,6 @@
     "jsdom": "^9.8.3",
     "react-addons-test-utils": "^15.4.0",
     "react-test-renderer": "^15.4.0",
-    "sinon": "^1.17.6",
     "stylelint": "^7.6.0",
     "stylelint-config-standard": "^15.0.0"
   }

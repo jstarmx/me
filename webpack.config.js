@@ -15,7 +15,7 @@ const common = {
       path.join(Paths.scripts, 'app.jsx'),
       path.join(Paths.styles, 'app.scss'),
     ],
-    vendor: ['react'],
+    vendor: ['react', 'superagent'],
   },
   output: {
     path: Paths.build,
@@ -94,6 +94,7 @@ switch (process.env.npm_lifecycle_event) {
         },
         plugins: [
           new StyleLintPlugin({
+            configFile: './.stylelintrc.json',
             context: Paths.styles,
             syntax: 'scss',
           }),
