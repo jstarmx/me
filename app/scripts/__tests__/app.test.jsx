@@ -8,9 +8,9 @@ const DOMElements = {};
 
 Actions.savePhotos = jest.fn();
 window.__PRELOADED_STATE__ = 'photoset';
-document.getElementById = jest.fn((id) => {
-  DOMElements[id] = document.createElement('div');
-  return DOMElements[id];
+document.querySelector = jest.fn((selector) => {
+  DOMElements[selector] = document.createElement('div');
+  return DOMElements[selector];
 });
 
 require('../app');
@@ -21,7 +21,7 @@ describe('App', () => {
   });
 
   it('renders React components to the DOM', () => {
-    expect(DOMElements.gallery.innerHTML).toBe('<!-- react-empty: 1 -->');
-    expect(DOMElements.lightbox.innerHTML).toBe('<!-- react-empty: 1 -->');
+    expect(DOMElements['#gallery'].innerHTML).toBe('<!-- react-empty: 1 -->');
+    expect(DOMElements['#lightbox'].innerHTML).toBe('<!-- react-empty: 1 -->');
   });
 });

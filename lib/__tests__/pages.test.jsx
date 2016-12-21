@@ -17,7 +17,7 @@ Store.get = jest.fn(data => data);
 const Pages = require('../pages');
 
 const galleryData = {
-  template: 'gallery',
+  template: 'pages/gallery',
   options: {
     body: '<!-- react-empty: 1 -->',
     preloadedState: 'photos',

@@ -30,6 +30,8 @@ Paths.views = 'views';
 Paths.build = 'build';
 Pages.gallery = jest.fn();
 console.log = jest.fn(); // eslint-disable-line no-console
+const res = {};
+res.render = jest.fn();
 
 const app = require('../server.js');
 
@@ -43,8 +45,13 @@ describe('Server', () => {
 
   describe('routing', () => {
     it('serves the homepage', () => {
-      navigate['/']('req', 'res');
-      expect(Pages.gallery).toBeCalledWith('req', 'res');
+      navigate['/']('req', res);
+      expect(res.render).toBeCalledWith('pages/home');
+    });
+
+    it('serves the gallery page', () => {
+      navigate['/snap']('req', res);
+      expect(Pages.gallery).toBeCalledWith('req', res);
     });
   });
 

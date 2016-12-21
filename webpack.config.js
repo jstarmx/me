@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
@@ -14,7 +15,7 @@ const common = {
       path.join(Paths.scripts, 'app.jsx'),
       path.join(Paths.styles, 'app.scss'),
     ],
-    vendor: ['react'],
+    vendor: ['react', 'superagent'],
   },
   output: {
     path: Paths.build,
@@ -24,6 +25,12 @@ const common = {
     extensions: ['', '.js', '.jsx'],
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.scss$/,
+        loader: 'import-glob-loader',
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -39,10 +46,12 @@ const common = {
   },
   plugins: [
     new ExtractTextPlugin('app.css'),
+    new CopyWebpackPlugin([{ from: Paths.images, to: Paths.build }]),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
     }),
   ],
+  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
 };
 
 let config;
@@ -85,12 +94,12 @@ switch (process.env.npm_lifecycle_event) {
         },
         plugins: [
           new StyleLintPlugin({
+            configFile: './.stylelintrc.json',
             context: Paths.styles,
             syntax: 'scss',
           }),
           new WebpackNotifierPlugin(),
         ],
-        postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
       }
     );
 }

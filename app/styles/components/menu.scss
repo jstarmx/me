@@ -1,0 +1,22 @@
+.menu {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4em;
+  letter-spacing: 0.2em;
+  list-style: none;
+  margin: 0;
+  padding: 1em;
+
+  &__link {
+    color: $white;
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $white;
+      color: $pink;
+    }
+  }
+}
