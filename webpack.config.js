@@ -15,7 +15,7 @@ const common = {
       path.join(Paths.scripts, 'app.jsx'),
       path.join(Paths.styles, 'app.scss'),
     ],
-    vendor: ['react', 'superagent'],
+    vendor: ['react', 'react-dom', 'superagent'],
   },
   output: {
     path: Paths.build,

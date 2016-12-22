@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const Actions = require('./flux/actions');
 const Gallery = require('./components/gallery');
 const Lightbox = require('./components/lightbox');
@@ -7,13 +6,12 @@ const ReactDOM = require('react-dom');
 
 Actions.savePhotos(window.__PRELOADED_STATE__);
 
-const components = {
-  '#gallery': <Gallery />,
-  '#lightbox': <Lightbox />,
-};
+const components = [
+  { selector: '#gallery', tag: <Gallery /> },
+  { selector: '#lightbox', tag: <Lightbox /> },
+];
 
-_.each(components, (component, selector) => {
-  if (document.querySelector(selector)) {
-    ReactDOM.render(component, document.querySelector(selector));
-  }
+components.forEach((component) => {
+  const el = document.querySelector(component.selector);
+  if (el) ReactDOM.render(component.tag, document.querySelector(el));
 });
