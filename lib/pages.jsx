@@ -8,7 +8,7 @@ const Store = require('../app/scripts/flux/store');
 module.exports = {
   gallery (req, res) {
     function render () {
-      return res.render('pages/gallery', {
+      return res.render('pages/snap', {
         body: ReactDOMServer.renderToString(<Gallery />),
         preloadedState: Store.get('photos'),
       });

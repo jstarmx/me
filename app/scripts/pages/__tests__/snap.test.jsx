@@ -1,8 +1,8 @@
-jest.mock('../flux/actions');
-jest.mock('../components/gallery');
-jest.mock('../components/lightbox');
+jest.mock('../../flux/actions');
+jest.mock('../../components/gallery');
+jest.mock('../../components/lightbox');
 
-const Actions = require('../flux/actions');
+const Actions = require('../../flux/actions');
 
 const DOMElements = {};
 
@@ -13,7 +13,7 @@ document.querySelector = jest.fn((selector) => {
   return DOMElements[selector];
 });
 
-require('../app');
+require('../snap');
 
 describe('App', () => {
   it('saves preloaded photos', () => {
