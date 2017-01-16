@@ -1,6 +1,6 @@
 .lightbox {
   &__overlay {
-    background-color: rgba(13,94,130,0.8);
+    background-color: rgba(13, 94, 130, 0.8);
     border: 0;
     bottom: 0;
     left: 0;
@@ -14,7 +14,7 @@
   &__image {
     border: 0.5em solid $white;
     bottom: 0;
-    box-shadow: 0 0.2em 0.2em 0.1em rgba(0,0,0,0.15);
+    box-shadow: 0 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.15);
     display: block;
     left: 0;
     margin: auto;

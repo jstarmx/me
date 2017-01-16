@@ -1,10 +1,13 @@
 body {
-  background: $pink;
-  background: linear-gradient(120deg,$pink,$purple);
+  @include neon-passion;
   color: $white;
   font-family: "Raleway", sans-serif;
   font-weight: 100;
   letter-spacing: 0.05em;
   padding: 1em;
   text-align: center;
+}
+
+.snap {
+  @include rose-tint;
 }
