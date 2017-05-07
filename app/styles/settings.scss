@@ -4,4 +4,10 @@ $white: #fff;
 $pink: #d4224f;
 $purple: #91186b;
 
-/* stylelint-enable */
+$breakpoints: (
+  s: 30,
+  m: 40,
+  l: 50,
+  xl: 60,
+  xxl: 70
+);

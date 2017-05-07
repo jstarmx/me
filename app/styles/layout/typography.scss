@@ -1,5 +1,15 @@
+body {
+  color: $white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
 h1 {
   font-size: 3em;
   font-weight: 100;
   letter-spacing: 0.2em;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
 }

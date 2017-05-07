@@ -8,15 +8,31 @@
   margin: 0;
   padding: 1em;
 
+  &--horizontal {
+    border-bottom: 0.1rem solid rgba($white, 0.25);
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1em;
+
+    @include max-width(m) {
+      font-size: 1em;
+      letter-spacing: 0;
+      padding: 0 0 1em;
+    }
+  }
+
   &__link {
     color: $white;
     display: block;
-    padding: 0.5em;
+    padding: 0.25em 0.5em;
     text-decoration: none;
 
-    &:hover {
+    &:hover,
+    &--active {
       background-color: $white;
+      border-radius: 0.1em;
       color: $pink;
+      font-weight: 300;
     }
   }
 }

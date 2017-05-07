@@ -12,8 +12,8 @@
 
 html {
   font-family: sans-serif; /* 1 */
-  height: 100%;
   line-height: 1.15; /* 2 */
+  min-height: 100%;
   -ms-text-size-adjust: 100%; /* 3 */
   -webkit-text-size-adjust: 100%; /* 3 */
 }

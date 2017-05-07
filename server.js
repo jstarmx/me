@@ -11,7 +11,8 @@ app.set('views', Paths.views);
 app.set('view engine', 'ejs');
 app.use(express.static(Paths.build));
 
-app.get('/', (req, res) => res.render('pages/home'));
+app.get('/', (req, res) => Pages.home(req, res));
+app.get('/dev', (req, res) => Pages.dev(req, res));
 app.get('/snap', (req, res) => Pages.gallery(req, res));
 
 app.listen(app.get('port'), () => {
