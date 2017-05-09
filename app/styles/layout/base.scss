@@ -10,3 +10,8 @@ body {
 .snap {
   @include rose-tint;
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 40em;
+}
