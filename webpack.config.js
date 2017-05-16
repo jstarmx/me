@@ -28,7 +28,7 @@ const common = {
       {
         test: /\.scss$/,
         loader: 'import-glob-loader',
-      }
+      },
     ],
     loaders: [
       {

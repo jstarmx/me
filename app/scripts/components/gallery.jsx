@@ -3,21 +3,21 @@ const Store = require('../flux/store');
 const Thumb = require('./thumb');
 
 const Gallery = React.createClass({
-  getInitialState () {
+  getInitialState() {
     return { photos: Store.get('photos') };
   },
 
-  render () {
+  render() {
     return (
       <ul className="gallery">
         {this.state.photos.map(photo =>
           <Thumb
-            farm={photo.farm}
-            id={photo.id}
-            key={photo.id}
-            secret={photo.secret}
-            server={photo.server}
-            title={photo.title}
+            farm={ photo.farm }
+            id={ photo.id }
+            key={ photo.id }
+            secret={ photo.secret }
+            server={ photo.server }
+            title={ photo.title }
           />
         )}
       </ul>

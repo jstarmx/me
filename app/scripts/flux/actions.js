@@ -1,21 +1,21 @@
 const Dispatcher = require('./dispatcher');
 
 module.exports = {
-  fetch (api) {
+  fetch(api) {
     return api()
       .then((response) => {
         this[response.action](response.payload);
       });
   },
 
-  savePhotos (photos) {
+  savePhotos(photos) {
     Dispatcher.dispatch({
       action: 'SAVE_PHOTOS',
       photos,
     });
   },
 
-  setLightbox (url) {
+  setLightbox(url) {
     Dispatcher.dispatch({
       action: 'SET_LIGHTBOX',
       url,

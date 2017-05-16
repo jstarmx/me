@@ -20,12 +20,12 @@ e.preventDefault = jest.fn();
 
 const wrapper = shallow(
   <Thumb
-    farm={photo.farm}
-    id={photo.id}
-    key={photo.id}
-    secret={photo.secret}
-    server={photo.server}
-    title={photo.title}
+    farm={ photo.farm }
+    id={ photo.id }
+    key={ photo.id }
+    secret={ photo.secret }
+    server={ photo.server }
+    title={ photo.title }
   />
 );
 

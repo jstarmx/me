@@ -7,20 +7,20 @@ const _store = {
 };
 
 const Store = Object.assign(EventEmitter.prototype, {
-  set (data) {
+  set(data) {
     Object.assign(_store, data);
     this.emit('change');
   },
 
-  get (item) {
+  get(item) {
     return _store[item];
   },
 
-  has (item) {
+  has(item) {
     return _store[item].length > 0;
   },
 
-  addChangeListener (callback) {
+  addChangeListener(callback) {
     this.on('change', callback);
   },
 });

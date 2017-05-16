@@ -19,7 +19,7 @@ describe('Actions', () => {
 
     expect(Dispatcher.dispatch).toHaveBeenCalledWith({
       action: 'SET_LIGHTBOX',
-      url: 'url'
+      url: 'url',
     });
   });
 
@@ -27,7 +27,7 @@ describe('Actions', () => {
     Actions.fetch(Api.flickr).then(() => {
       expect(Dispatcher.dispatch).toHaveBeenCalledWith({
         action: 'SAVE_PHOTOS',
-        photos: 'photos'
+        photos: 'photos',
       });
     })
   );

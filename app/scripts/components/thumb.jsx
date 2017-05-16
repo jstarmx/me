@@ -10,29 +10,29 @@ const Thumb = React.createClass({
     title: React.PropTypes.string,
   },
 
-  _onClick (e) {
+  _onClick(e) {
     e.preventDefault();
     Actions.setLightbox(this._url('c'));
   },
 
-  _style () {
+  _style() {
     return { backgroundImage: `url("${this._url()}")` };
   },
 
-  _url (size) {
+  _url(size) {
     const suffix = size ? (`_${size}`) : '';
 
     return `https://farm${this.props.farm}.staticflickr.com/${this.props.server}` +
       `/${this.props.id}_${this.props.secret}${suffix}.jpg`;
   },
 
-  render () {
+  render() {
     return (
-      <li className="thumb" style={this._style()} >
+      <li className="thumb" style={ this._style() } >
         <a
           className="thumb__link"
-          href={this._url('c')}
-          onClick={this._onClick}
+          href={ this._url('c') }
+          onClick={ this._onClick }
           rel="noopener noreferrer"
           target="_blank"
         >
