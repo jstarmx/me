@@ -12,7 +12,7 @@ const MenuLink = ({ active, name }) => (
 
 MenuLink.propTypes = {
   active: PropTypes.string.isRequired,
-  name: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 const Menu = ({ active, horizontal }) => (

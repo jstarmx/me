@@ -1,28 +1,37 @@
-const React = require('react');
-const Store = require('../flux/store');
-const Thumb = require('./thumb');
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Gallery = React.createClass({
-  getInitialState() {
-    return { photos: Store.get('photos') };
-  },
+import Thumb from './thumb';
 
-  render() {
-    return (
-      <ul className="gallery">
-        {this.state.photos.map(photo =>
-          <Thumb
-            farm={ photo.farm }
-            id={ photo.id }
-            key={ photo.id }
-            secret={ photo.secret }
-            server={ photo.server }
-            title={ photo.title }
-          />
-        )}
-      </ul>
-    );
-  },
-});
+const Gallery = ({ images }) => (
+  <main className="gallery">
+    { images.map(section =>
+      <section className="gallery__section" key={ section.title }>
+        <h2>{ section.title }</h2>
+        <ul className="gallery__images">
+          { section.images.map(image =>
+            <Thumb
+              path={ image.path }
+              thumb={ image.thumb }
+              title={ image.title }
+              key={ image.path }
+            />
+          ) }
+        </ul>
+      </section>
+    ) }
+  </main>
+);
 
-module.exports = Gallery;
+Gallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      thumb: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })).isRequired,
+  })),
+};
+
+export default Gallery;
