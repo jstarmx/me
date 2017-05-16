@@ -29,6 +29,7 @@ class Lightbox extends Component {
       <div>
         { this.state.url &&
           <button className="lightbox__overlay" onClick={ this._click }>
+            <img src="x.svg" className="lightbox__x" alt="close" />
             <img src={ this.state.url } className="lightbox__image" role="presentation" />
           </button>
         }

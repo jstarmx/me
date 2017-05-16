@@ -15,6 +15,7 @@ app.get('/', (req, res) => Pages.home(req, res));
 app.get('/dev', (req, res) => Pages.dev(req, res));
 app.get('/design', (req, res) => Pages.design(req, res));
 app.get('/snap', (req, res) => Pages.gallery(req, res));
+app.get('*', (req, res) => res.redirect('/'));
 
 app.listen(app.get('port'), () => {
   console.log('Node app is running on port', app.get('port')); // eslint-disable-line no-console

@@ -1,6 +1,6 @@
 .lightbox {
   &__overlay {
-    background-color: rgba(13, 94, 130, 0.8);
+    background-color: rgba(color("lagoon", "light"), 0.9);
     border: 0;
     bottom: 0;
     left: 0;
@@ -23,5 +23,17 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  &__x {
+    cursor: pointer;
+    opacity: 0.75;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

@@ -1,28 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MenuLink = ({ active, name }) => (
-  <a
-    className={ `menu__link ${active === name ? 'menu__link--active' : ''}` }
-    href={ `/${name}` }
-  >
-    { name }
-  </a>
-);
-
-MenuLink.propTypes = {
-  active: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-};
+import MenuLink from './menu_link';
 
 const Menu = ({ active, horizontal }) => (
   <ul className={ `menu ${horizontal ? 'menu--horizontal' : ''}` }>
-    <li className="menu__item">
-      <MenuLink active={ active } name="dev" />
-    </li>
-    <li className="menu__item">
-      <MenuLink active={ active } name="design" />
-    </li>
+    <MenuLink active={ active } name="dev" />
+    <MenuLink active={ active } name="design" />
   </ul>
 );
 
