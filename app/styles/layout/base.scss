@@ -1,17 +1,32 @@
 body {
-  @include neon-passion;
-  padding: 1em;
+  height: 100%;
 }
 
-.home {
-  text-align: center;
-}
+.wrapper {
+  @include gradient("neon-passion");
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 
-.snap {
-  @include rose-tint;
+  &--home {
+    text-align: center;
+  }
+
+  &--dev {
+    @include gradient("burning-sky");
+  }
+
+  &--design {
+    @include gradient("lagoon");
+  }
+
+  &--snap {
+    @include gradient("rainforest");
+  }
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 40em;
+  margin: 0 auto 2em;
+  max-width: 45em;
+  padding: 0 1em;
 }

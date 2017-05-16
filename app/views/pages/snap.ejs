@@ -4,8 +4,13 @@
     <%- include('../partials/head.ejs', { title: 'snap' }) %>
   </head>
   <body class="snap">
-    <%- menu %>
-    <div id="gallery"><%- body %></div>
+    <div class="wrapper wrapper--snap">
+      <%- include('../partials/header.ejs', { menu }) %>
+      <div id="gallery"><%- body %></div>
+      <footer class="footer footer--wide">
+        <%- include('../partials/social.ejs') %>
+      </footer>
+    </div>
     <div id="lightbox"></div>
     <script>
       window.__PRELOADED_STATE__ = <%- JSON.stringify(preloadedState) %>;

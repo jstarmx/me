@@ -44,7 +44,7 @@
     "lodash": "^4.17.2",
     "node-sass": "^3.12.2",
     "postcss-loader": "^1.1.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.0.2",
     "sass-loader": "^4.0.2",

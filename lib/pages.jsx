@@ -7,23 +7,29 @@ const ReactDOMServer = require('react-dom/server');
 const Store = require('../app/scripts/flux/store');
 
 module.exports = {
-  home (req, res) {
+  home(req, res) {
     return res.render('pages/home', {
       menu: ReactDOMServer.renderToString(<Menu />),
     });
   },
 
-  dev (req, res) {
+  dev(req, res) {
     return res.render('pages/dev', {
       menu: ReactDOMServer.renderToString(<Menu horizontal active="dev" />),
     });
   },
 
-  gallery (req, res) {
-    function render () {
+  design(req, res) {
+    return res.render('pages/design', {
+      menu: ReactDOMServer.renderToString(<Menu horizontal active="design" />),
+    });
+  },
+
+  gallery(req, res) {
+    function render() {
       return res.render('pages/snap', {
         body: ReactDOMServer.renderToString(<Gallery />),
-        menu: ReactDOMServer.renderToString(<Menu horizontal />),
+        menu: ReactDOMServer.renderToString(<Menu horizontal active="snap" />),
         preloadedState: Store.get('photos'),
       });
     }

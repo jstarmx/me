@@ -1,20 +1,4 @@
-/* stylelint-disable color-no-hex  */
-
-@mixin gradient($colour1, $colour2) {
-  background: $colour1;
-  background: linear-gradient(120deg, $colour1, $colour2);
+@mixin gradient($palette) {
+  background: color($palette, "dark");
+  background: linear-gradient(120deg, color($palette, "light"), color($palette, "dark"));
 }
-
-@mixin neon-passion {
-  @include gradient($pink, $purple);
-}
-
-@mixin rose-tint {
-  @include gradient(#636FA4, #E8CBC0);
-}
-
-@mixin rainforest {
-  @include gradient(#9FEA2E, #5ACC41);
-}
-
-/* stylelint-enable */

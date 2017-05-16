@@ -12,6 +12,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const common = {
   entry: {
     app: path.join(Paths.styles, 'app.scss'),
+    design: path.join(Paths.scripts, 'pages', 'design.jsx'),
     snap: path.join(Paths.scripts, 'pages', 'snap.jsx'),
     vendor: ['react', 'react-dom', 'superagent'],
   },

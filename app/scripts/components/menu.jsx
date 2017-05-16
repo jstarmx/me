@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const MenuLink = ({ active, name }) => (
   <a
-    className={`menu__link ${active === name ? 'menu__link--active' : ''}`}
-    href={`/${name}`}
+    className={ `menu__link ${active === name ? 'menu__link--active' : ''}` }
+    href={ `/${name}` }
   >
-    {name}
+    { name }
   </a>
 );
 
@@ -16,21 +16,12 @@ MenuLink.propTypes = {
 };
 
 const Menu = ({ active, horizontal }) => (
-  <ul className={`menu ${horizontal ? 'menu--horizontal' : ''}`}>
+  <ul className={ `menu ${horizontal ? 'menu--horizontal' : ''}` }>
     <li className="menu__item">
-      <MenuLink active={active} name="dev" />
+      <MenuLink active={ active } name="dev" />
     </li>
     <li className="menu__item">
-      <MenuLink active={active} name="design" />
-    </li>
-    <li className="menu__item">
-      <MenuLink active={active} name="shoot" />
-    </li>
-    <li className="menu__item">
-      <MenuLink active={active} name="snap" />
-    </li>
-    <li className="menu__item">
-      <MenuLink active={active} name="paint" />
+      <MenuLink active={ active } name="design" />
     </li>
   </ul>
 );
