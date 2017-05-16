@@ -1,19 +1,26 @@
-exports[`<Thumb /> (Snapshot) renders a thumbnail component 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Thumb component 1`] = `
 <li
   className="thumb"
   style={
     Object {
-      "backgroundImage": "url(\"https://farmundefined.staticflickr.com/undefined/undefined_undefined.jpg\")",
+      "backgroundImage": "url(\\"thumb\\")",
     }
-  }>
+  }
+>
   <a
     className="thumb__link"
-    href="https://farmundefined.staticflickr.com/undefined/undefined_undefined_c.jpg"
+    href="path"
     onClick={[Function]}
     rel="noopener noreferrer"
-    target="_blank">
+    target="_blank"
+  >
     <span
-      className="thumb__title" />
+      className="thumb__title"
+    >
+      title
+    </span>
   </a>
 </li>
 `;

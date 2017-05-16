@@ -1,4 +1,41 @@
-exports[`<Gallery /> (Snapshot) renders a gallery component 1`] = `
-<ul
-  className="gallery" />
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Gallery component 1`] = `
+<main
+  className="gallery"
+>
+  <section
+    className="gallery__section"
+  >
+    <h2>
+      dummy gallery
+    </h2>
+    <ul
+      className="gallery__images"
+    >
+      <li
+        className="thumb"
+        style={
+          Object {
+            "backgroundImage": "url(\\"thumb\\")",
+          }
+        }
+      >
+        <a
+          className="thumb__link"
+          href="path"
+          onClick={[Function]}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span
+            className="thumb__title"
+          >
+            title
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
 `;

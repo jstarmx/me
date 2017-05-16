@@ -1,11 +1,17 @@
-const Gallery = require('../gallery');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-describe('<Gallery /> (Snapshot)', () => {
-  it('renders a gallery component', () => {
-    const component = renderer.create(<Gallery />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+import Gallery from '../gallery';
+
+const images = [
+  {
+    title: 'dummy gallery',
+    images: [{ path: 'path', thumb: 'thumb', title: 'title' }],
+  },
+];
+
+it('renders a Gallery component', () => {
+  const component = renderer.create(<Gallery images={ images } />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });

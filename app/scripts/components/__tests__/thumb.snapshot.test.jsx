@@ -1,11 +1,12 @@
-const Thumb = require('../thumb');
-const React = require('react');
-const renderer = require('react-test-renderer');
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-describe('<Thumb /> (Snapshot)', () => {
-  it('renders a thumbnail component', () => {
-    const component = renderer.create(<Thumb />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+import Thumb from '../thumb';
+
+const props = { path: 'path', thumb: 'thumb', title: 'title' };
+
+it('renders a Thumb component', () => {
+  const component = renderer.create(<Thumb { ...props } />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });

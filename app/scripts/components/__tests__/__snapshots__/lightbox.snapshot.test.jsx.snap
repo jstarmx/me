@@ -1,1 +1,3 @@
-exports[`<Lightbox /> (Snapshot) renders a lightbox container 1`] = `null`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Lightbox component 1`] = `<div />`;
