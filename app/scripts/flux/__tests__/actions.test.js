@@ -1,34 +1,30 @@
+import { fetch, savePhotos, setLightbox } from '../actions';
+import Api from '../../api';
+import { dispatch } from '../dispatcher';
+
 jest.mock('../dispatcher');
 jest.mock('../../api');
 
-const Actions = require('../actions');
-const Api = require('../../api');
-const Dispatcher = require('../dispatcher');
-
-Api.flickr = jest.fn();
-Api.flickr.mockReturnValue(
+Api.flickr = jest.fn(() =>
   new Promise((resolve) => {
-    resolve({ action: 'savePhotos', payload: 'photos' });
+    resolve({ action: savePhotos, payload: 'photos' });
   })
 );
-Dispatcher.dispatch = jest.fn();
 
-describe('Actions', () => {
-  it('despatches a "SET_LIGHTBOX" action', () => {
-    Actions.setLightbox('url');
+it('despatches a "SET_LIGHTBOX" action', () => {
+  setLightbox('url');
 
-    expect(Dispatcher.dispatch).toHaveBeenCalledWith({
-      action: 'SET_LIGHTBOX',
-      url: 'url',
-    });
+  expect(dispatch).toHaveBeenCalledWith({
+    action: 'SET_LIGHTBOX',
+    url: 'url',
   });
-
-  it('fetches photos and calls the "SAVE_PHOTOS" action', () =>
-    Actions.fetch(Api.flickr).then(() => {
-      expect(Dispatcher.dispatch).toHaveBeenCalledWith({
-        action: 'SAVE_PHOTOS',
-        photos: 'photos',
-      });
-    })
-  );
 });
+
+it('fetches photos and calls the "SAVE_PHOTOS" action', () =>
+  fetch(Api.flickr).then(() => {
+    expect(dispatch).toHaveBeenCalledWith({
+      action: 'SAVE_PHOTOS',
+      photos: 'photos',
+    });
+  })
+);

@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
-const Paths = require('./lib/paths');
+const paths = require('./lib/paths');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const validate = require('webpack-validator');
 const webpack = require('webpack');
@@ -11,13 +11,12 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 
 const common = {
   entry: {
-    app: path.join(Paths.styles, 'app.scss'),
-    design: path.join(Paths.scripts, 'pages', 'design.jsx'),
-    snap: path.join(Paths.scripts, 'pages', 'snap.jsx'),
+    app: path.join(paths.STYLES, 'app.scss'),
+    design: path.join(paths.SCRIPTS, 'pages', 'design.jsx'),
     vendor: ['react', 'react-dom', 'superagent'],
   },
   output: {
-    path: Paths.build,
+    path: paths.BUILD,
     filename: '[name].js',
   },
   resolve: {
@@ -33,19 +32,19 @@ const common = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: Paths.scripts,
+        include: paths.SCRIPTS,
         loader: 'babel',
       },
       {
         test: /\.scss$/,
-        include: Paths.styles,
+        include: paths.STYLES,
         loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
     ],
   },
   plugins: [
     new ExtractTextPlugin('app.css'),
-    new CopyWebpackPlugin([{ from: Paths.images, to: Paths.build }]),
+    new CopyWebpackPlugin([{ from: paths.IMAGES, to: paths.BUILD }]),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
     }),
@@ -94,7 +93,7 @@ switch (process.env.npm_lifecycle_event) {
         plugins: [
           new StyleLintPlugin({
             configFile: './.stylelintrc.json',
-            context: Paths.styles,
+            context: paths.STYLES,
             syntax: 'scss',
           }),
           new WebpackNotifierPlugin(),

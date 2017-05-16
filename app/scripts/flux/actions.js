@@ -1,24 +1,16 @@
 const Dispatcher = require('./dispatcher');
 
-module.exports = {
-  fetch(api) {
-    return api()
-      .then((response) => {
-        this[response.action](response.payload);
-      });
-  },
+export const fetch = api =>
+  api().then(({ action, payload }) => action(payload));
 
-  savePhotos(photos) {
-    Dispatcher.dispatch({
-      action: 'SAVE_PHOTOS',
-      photos,
-    });
-  },
+export const savePhotos = photos =>
+  Dispatcher.dispatch({
+    action: 'SAVE_PHOTOS',
+    photos,
+  });
 
-  setLightbox(url) {
-    Dispatcher.dispatch({
-      action: 'SET_LIGHTBOX',
-      url,
-    });
-  },
-};
+export const setLightbox = url =>
+  Dispatcher.dispatch({
+    action: 'SET_LIGHTBOX',
+    url,
+  });

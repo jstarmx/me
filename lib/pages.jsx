@@ -1,44 +1,19 @@
-const Actions = require('../app/scripts/flux/actions');
-const Api = require('../app/scripts/api');
-const Gallery = require('../app/scripts/components/gallery');
-const Menu = require('../app/scripts/components/menu');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const Store = require('../app/scripts/flux/store');
 
-module.exports = {
-  home(req, res) {
-    return res.render('pages/home', {
-      menu: ReactDOMServer.renderToString(<Menu />),
-    });
-  },
+const Menu = require('../app/scripts/components/menu');
 
-  dev(req, res) {
-    return res.render('pages/dev', {
-      menu: ReactDOMServer.renderToString(<Menu horizontal active="dev" />),
-    });
-  },
+export const home = (req, res) =>
+  res.render('pages/home', {
+    menu: ReactDOMServer.renderToString(<Menu />),
+  });
 
-  design(req, res) {
-    return res.render('pages/design', {
-      menu: ReactDOMServer.renderToString(<Menu horizontal active="design" />),
-    });
-  },
+export const dev = (req, res) =>
+  res.render('pages/dev', {
+    menu: ReactDOMServer.renderToString(<Menu horizontal active="dev" />),
+  });
 
-  gallery(req, res) {
-    function render() {
-      return res.render('pages/snap', {
-        body: ReactDOMServer.renderToString(<Gallery />),
-        menu: ReactDOMServer.renderToString(<Menu horizontal active="snap" />),
-        preloadedState: Store.get('photos'),
-      });
-    }
-
-    if (Store.has('photos')) {
-      return render();
-    }
-
-    Actions.fetch(Api.flickr);
-    return Store.addChangeListener(render);
-  },
-};
+export const design = (req, res) =>
+  res.render('pages/design', {
+    menu: ReactDOMServer.renderToString(<Menu horizontal active="design" />),
+  });

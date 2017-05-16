@@ -1,9 +1,11 @@
 {
   "extends": "stylelint-config-standard",
+  "plugins": [
+		"stylelint-order"
+	],
   "rules": {
     "color-named": "never",
     "color-no-hex": true,
-    "declaration-block-properties-order": "alphabetical",
     "declaration-empty-line-before": "never",
     "declaration-no-important": true,
     "declaration-property-unit-whitelist": {
@@ -17,6 +19,7 @@
     "function-max-empty-lines": 0,
     "function-url-quotes": "always",
     "max-empty-lines": 1,
+    "order/properties-alphabetical-order": true,
     "selector-attribute-quotes": "always",
     "selector-max-empty-lines": 0,
     "selector-no-id": true,
