@@ -1,8 +1,13 @@
 .video {
   height: 0;
+  margin-bottom: 2em;
   overflow: hidden;
   padding-bottom: 56.25%;
   position: relative;
+
+  @include min-width(m) {
+    margin-bottom: 4em;
+  }
 
   &__iframe {
     height: 100%;
