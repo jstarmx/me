@@ -1,45 +1,46 @@
-const autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const merge = require('webpack-merge');
 const path = require('path');
 const paths = require('./lib/paths');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const validate = require('webpack-validator');
 const webpack = require('webpack');
-const WebpackNotifierPlugin = require('webpack-notifier');
 
-const common = {
+const config = {
   entry: {
     app: path.join(paths.STYLES, 'app.scss'),
     design: path.join(paths.SCRIPTS, 'pages', 'design.jsx'),
     paint: path.join(paths.SCRIPTS, 'pages', 'paint.jsx'),
-    vendor: ['react', 'react-dom', 'superagent'],
   },
   output: {
     path: paths.BUILD,
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.scss$/,
+        include: paths.STYLES,
         loader: 'import-glob-loader',
+        enforce: 'pre',
       },
-    ],
-    loaders: [
       {
         test: /\.jsx?$/,
         include: paths.SCRIPTS,
-        loader: 'babel',
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
         include: paths.STYLES,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
+        }),
       },
     ],
   },
@@ -47,60 +48,15 @@ const common = {
     new ExtractTextPlugin('app.css'),
     new CopyWebpackPlugin([{ from: paths.IMAGES, to: paths.BUILD }]),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
+      name: 'vendor',
+      minChunks(module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
     }),
   ],
-  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
 };
 
-let config;
-
-switch (process.env.npm_lifecycle_event) {
-  case 'build':
-  case 'postinstall':
-    config = merge(
-      common,
-      {
-        devtool: 'source-map',
-        plugins: [
-          new webpack.DefinePlugin({
-            'process.env': {
-              NODE_ENV: JSON.stringify('production'),
-            },
-          }),
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              warnings: false,
-            },
-          }),
-        ],
-      }
-    );
-    break;
-
-  default:
-    config = merge(
-      common,
-      {
-        devtool: 'eval-source-map',
-        module: {
-          preLoaders: [
-            {
-              test: /\.jsx?$/,
-              loaders: ['eslint'],
-            },
-          ],
-        },
-        plugins: [
-          new StyleLintPlugin({
-            configFile: './.stylelintrc.json',
-            context: paths.STYLES,
-            syntax: 'scss',
-          }),
-          new WebpackNotifierPlugin(),
-        ],
-      }
-    );
-}
-
-module.exports = validate(config);
+module.exports = config;

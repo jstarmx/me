@@ -5,6 +5,7 @@ import Gallery from '../gallery';
 
 const images = [
   {
+    id: 0,
     title: 'dummy gallery',
     images: [{ path: 'path', thumb: 'thumb', title: 'title' }],
   },

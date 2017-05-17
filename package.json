@@ -1,15 +1,15 @@
 {
   "name": "me",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "My personal website",
   "engines": {
     "node": "7.1.0"
   },
   "scripts": {
-    "dev": "rm -rf ./public && webpack -d --watch",
-    "postinstall": "rm -rf ./public && webpack -p",
+    "dev": "rm -rf ./public && webpack -d --watch --config './webpack.dev.config.js'",
+    "postinstall": "rm -rf ./public && webpack -p --config './webpack.prod.config.js'",
     "lint": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss",
-    "test": "eslint ./ --ext .js --ext .jsx && stylelint ./app/styles/**/*.scss && jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "yarn lint && jest --coverage && cat ./__coverage__/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "author": "James Starkie",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "ejs": "^2.5.2",
     "events": "^1.1.1",
     "express": "^4.13.3",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "flux": "^3.1.0",
     "import-glob-loader": "^1.1.0",
     "lodash": "^4.17.2",
@@ -51,10 +51,9 @@
     "stylelint-order": "^0.4.4",
     "stylelint-webpack-plugin": "^0.4.0",
     "superagent": "^2.3.0",
-    "webpack": "^1.12.9",
-    "webpack-merge": "^0.17.0",
-    "webpack-notifier": "^1.4.1",
-    "webpack-validator": "^2.2.9"
+    "webpack": "^2.5.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-notifier": "^1.5.0"
   },
   "devDependencies": {
     "babel-jest": "^17.0.2",
