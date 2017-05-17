@@ -7,7 +7,9 @@ exports[`renders a Gallery component 1`] = `
   <section
     className="gallery__section"
   >
-    <h2>
+    <h2
+      className="gallery__heading"
+    >
       dummy gallery
     </h2>
     <ul

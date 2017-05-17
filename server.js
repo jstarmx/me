@@ -14,6 +14,7 @@ app.use(express.static(paths.BUILD));
 app.get('/', (req, res) => Pages.home(req, res));
 app.get('/dev', (req, res) => Pages.dev(req, res));
 app.get('/design', (req, res) => Pages.design(req, res));
+app.get('/shoot', (req, res) => Pages.shoot(req, res));
 app.get('*', (req, res) => res.redirect('/'));
 
 app.listen(app.get('port'), () => {

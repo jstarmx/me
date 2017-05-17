@@ -7,7 +7,7 @@ const Gallery = ({ images }) => (
   <main className="gallery">
     { images.map(section =>
       <section className="gallery__section" key={ section.title }>
-        <h2>{ section.title }</h2>
+        <h2 className="gallery__heading">{ section.title }</h2>
         <ul className="gallery__images">
           { section.images.map(image =>
             <Thumb

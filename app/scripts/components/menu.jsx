@@ -7,6 +7,7 @@ const Menu = ({ active, horizontal }) => (
   <ul className={ `menu ${horizontal ? 'menu--horizontal' : ''}` }>
     <MenuLink active={ active } name="dev" />
     <MenuLink active={ active } name="design" />
+    <MenuLink active={ active } name="shoot" />
   </ul>
 );
 
