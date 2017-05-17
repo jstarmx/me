@@ -23,6 +23,10 @@ body {
   &--shoot {
     @include gradient("rainforest");
   }
+
+  &--paint {
+    @include gradient("sunflower");
+  }
 }
 
 .container {

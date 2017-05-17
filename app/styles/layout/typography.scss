@@ -9,15 +9,23 @@ body {
 h1 {
   font-size: 3em;
   font-weight: 100;
-  letter-spacing: 0.2em;
-  line-height: 1.2;
+  letter-spacing: 0.1em;
+  line-height: 1;
   margin: 0 1em;
+
+  @include min-width(m) {
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+  }
 }
 
 h2 {
   font-size: 2em;
   font-weight: 100;
-  letter-spacing: 0.1em;
   line-height: 1.2;
   margin: 0.5em 0;
+
+  @include min-width(m) {
+    letter-spacing: 0.1em;
+  }
 }

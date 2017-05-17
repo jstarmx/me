@@ -1,6 +1,10 @@
 .gallery {
   padding: 0 2em;
 
+  @include max-width(m) {
+    margin-top: 2em;
+  }
+
   &__heading {
     margin-left: 1%;
     margin-right: 1%;

@@ -8,6 +8,7 @@ const Menu = ({ active, horizontal }) => (
     <MenuLink active={ active } name="dev" />
     <MenuLink active={ active } name="design" />
     <MenuLink active={ active } name="shoot" />
+    <MenuLink active={ active } name="paint" />
   </ul>
 );
 

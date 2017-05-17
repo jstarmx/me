@@ -1,6 +1,5 @@
 .lightbox {
   &__overlay {
-    background-color: rgba(color("lagoon", "light"), 0.9);
     border: 0;
     bottom: 0;
     left: 0;
@@ -9,6 +8,14 @@
     top: 0;
     width: 100%;
     z-index: 100;
+
+    .wrapper--design & {
+      background-color: rgba(color("lagoon", "light"), 0.9);
+    }
+
+    .wrapper--paint & {
+      background-color: rgba(color("sunflower", "light"), 0.9);
+    }
   }
 
   &__image {

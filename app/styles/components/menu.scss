@@ -47,6 +47,10 @@
       .wrapper--shoot & {
         color: color("rainforest", "dark");
       }
+
+      .wrapper--paint & {
+        color: color("sunflower", "dark");
+      }
     }
 
     &:hover,

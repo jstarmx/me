@@ -6,13 +6,15 @@ import Thumb from './thumb';
 const Gallery = ({ images }) => (
   <main className="gallery">
     { images.map(section =>
-      <section className="gallery__section" key={ section.title }>
-        <h2 className="gallery__heading">{ section.title }</h2>
+      <section className="gallery__section" key={ section.id }>
+        { section.title &&
+          <h2 className="gallery__heading">{ section.title }</h2>
+        }
         <ul className="gallery__images">
           { section.images.map(image =>
             <Thumb
               path={ image.path }
-              thumb={ image.thumb }
+              thumb={ image.thumb || image.path }
               title={ image.title }
               key={ image.path }
             />
@@ -25,13 +27,13 @@ const Gallery = ({ images }) => (
 
 Gallery.propTypes = {
   images: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.shape({
       path: PropTypes.string.isRequired,
-      thumb: PropTypes.string.isRequired,
+      thumb: PropTypes.string,
       title: PropTypes.string.isRequired,
     })).isRequired,
   })),
 };
 
-export default Gallery;
+module.exports = Gallery;

@@ -13,6 +13,7 @@ const common = {
   entry: {
     app: path.join(paths.STYLES, 'app.scss'),
     design: path.join(paths.SCRIPTS, 'pages', 'design.jsx'),
+    paint: path.join(paths.SCRIPTS, 'pages', 'paint.jsx'),
     vendor: ['react', 'react-dom', 'superagent'],
   },
   output: {

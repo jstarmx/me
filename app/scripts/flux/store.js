@@ -1,3 +1,4 @@
+require('core-js/fn/object/assign');
 const Dispatcher = require('./dispatcher');
 const EventEmitter = require('events').EventEmitter;
 

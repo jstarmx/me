@@ -27,7 +27,7 @@ $burning-sky: (
 );
 
 $rainforest: (
-  "light": #9fea2e,
+  "light": #b3da48,
   "dark": #388827
 );
 
@@ -36,9 +36,15 @@ $lagoon: (
   "dark": #284e98
 );
 
+$sunflower: (
+  "light": #efc440,
+  "dark": #f78c1c
+);
+
 $palettes: (
   "neon-passion": $neon-passion,
   "burning-sky": $burning-sky,
   "rainforest": $rainforest,
-  "lagoon": $lagoon
+  "lagoon": $lagoon,
+  "sunflower": $sunflower
 );
