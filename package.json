@@ -1,9 +1,9 @@
 {
   "name": "me",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "My personal website",
   "engines": {
-    "node": "7.1.0"
+    "node": "7.10.1"
   },
   "scripts": {
     "dev": "rm -rf ./public && webpack -d --watch --config './webpack.dev.config.js'",
