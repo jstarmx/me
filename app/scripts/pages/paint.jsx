@@ -1,5 +1,4 @@
-import React from 'react';
-import { render } from 'react-dom';
+import { h, render } from 'preact';
 
 import { paint } from '../../../lib/galleries';
 import Gallery from '../components/gallery';

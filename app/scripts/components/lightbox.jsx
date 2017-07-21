@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, h } from 'preact';
 import { bindAll } from 'lodash';
 
 import Store from '../flux/store';

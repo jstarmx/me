@@ -6,6 +6,11 @@
     "jest": true,
     "node": true
   },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
   "rules": {
     "comma-dangle": ["error", {
       "arrays": "always-multiline",

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, h } from 'preact';
 import PropTypes from 'prop-types';
 import { bindAll } from 'lodash';
 

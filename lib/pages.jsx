@@ -1,5 +1,5 @@
-const React = require('react');
-const render = require('react-dom/server').renderToString;
+const h = require('preact').h;
+const render = require('preact-render-to-string');
 
 const galleries = require('./galleries');
 const Gallery = require('../app/scripts/components/gallery');
