@@ -4,6 +4,7 @@
 		"stylelint-order"
 	],
   "rules": {
+    "at-rule-no-unknown": null,
     "color-named": "never",
     "color-no-hex": true,
     "declaration-empty-line-before": "never",
@@ -19,10 +20,11 @@
     "function-max-empty-lines": 0,
     "function-url-quotes": "always",
     "max-empty-lines": 1,
+    "no-descending-specificity": null,
     "order/properties-alphabetical-order": true,
     "selector-attribute-quotes": "always",
     "selector-max-empty-lines": 0,
-    "selector-no-id": true,
+    "selector-max-id": 1,
     "string-quotes": "double",
     "value-list-max-empty-lines": 0
   }
