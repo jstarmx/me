@@ -1,5 +1,6 @@
 require('babel-register');
 const express = require('express');
+const forceDomain = require('forcedomain');
 
 const app = express();
 
@@ -9,7 +10,9 @@ const paths = require('./lib/paths');
 app.set('port', (process.env.PORT || 5000));
 app.set('views', paths.VIEWS);
 app.set('view engine', 'ejs');
+
 app.use(express.static(paths.BUILD));
+app.use(forceDomain({ hostname: 'www.james-starkie.co.uk', protocol: 'https' }));
 
 app.get('/', (req, res) => Pages.home(req, res));
 app.get('/dev', (req, res) => Pages.dev(req, res));
